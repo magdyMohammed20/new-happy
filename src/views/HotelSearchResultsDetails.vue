@@ -9,9 +9,9 @@
       </div>-->
 
       <!-- 2223- {{ availbleHotelsDetails?.data?.hotel }} -->
-      <top-bar-with-date
+      <TopBarWithDate
         :availbleHotels="availbleHotelsDetails"
-      ></top-bar-with-date>
+      ></TopBarWithDate>
 
       <div class="w-full" v-if="availbleHotelsDetails.hotel">
         <!-- <top-bar
@@ -35,7 +35,7 @@
 
     <el-col v-if="roomsLoader" :span="24" :lg="24" class="lg:flex sm:hidden">
       <div class="w-full h-[200px]">
-        <loading-card class="h-[100vh]"></loading-card>
+        <LoadingCard class="h-[100vh]"></LoadingCard>
       </div>
     </el-col>
     <el-col
@@ -90,16 +90,16 @@
     </el-col>
 
     <!-- ✅ -->
-    <header-room-details-card></header-room-details-card>
+    <HeaderRoomDetailsCard></HeaderRoomDetailsCard>
   </el-row>
   <el-row class="lg:px-20 sm:px-10">
     <!-- ✅ -->
-    <room-choices-cards></room-choices-cards>
+    <RoomChoicesCards></RoomChoicesCards>
   </el-row>
 
   <el-row class="p-20 my-20 bg-slate-200">
     <!-- ✅ -->
-    <about-hotel></about-hotel>
+    <AboutHotel></AboutHotel>
   </el-row>
 
   <!-- cards of recommeded hotels -->
@@ -127,6 +127,12 @@
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
 import { convertStringValuesToObjects } from "@/utils/helpers";
+import HeaderRoomDetailsCard from "../components/hotelSearchResultDetails/HeaderRoomDetailsCard.vue";
+import HotelImagesSlide from '../components/hotelSearchResultDetails/HotelImagesSlide.vue'
+import RoomChoicesCards from "../components/hotelSearchResultDetails/RoomChoicesCards.vue"
+import AboutHotel from '../components/hotelSearchResultDetails/AboutHotel.vue'
+import LoadingCard from '../components/reusable-component/LoadingCard.vue'
+import TopBarWithDate from '../components/Static/topBarWithDate.vue'
 export default {
   data() {
     return {
@@ -138,6 +144,14 @@ export default {
       dialogVisible: false,
       showGallery: false,
     };
+  },
+  components: {
+    HeaderRoomDetailsCard,
+    HotelImagesSlide,
+    AboutHotel,
+    RoomChoicesCards,
+    LoadingCard,
+    TopBarWithDate
   },
   methods: {
     ...mapActions("hotels", ["fetchAvailbleHotelRooms"]),
