@@ -20,8 +20,7 @@
   </el-row>
 
   <!-- Show content when checkout data is ready -->
-  <el-row v-if="isCheckoutDataReady && active != 3" class="lg:md:px-20 sm:px-4 pb-10 justify-between"
-    >
+  <el-row v-if="isCheckoutDataReady && active != 3" class="lg:md:px-20 sm:px-4 pb-10 justify-between">
     <el-col :span="24" :lg="16" :sm="24" :md="16" :xs="24">
       <ReviewCard :checkout-data="checkoutData"></ReviewCard>
       <WelcomeCard :checkout-data="checkoutData"></WelcomeCard>
@@ -52,13 +51,13 @@ import WelcomeCard from "../components/checkOut/WelcomeCard.vue";
 import CheckOutRightCard from "../components/checkOut/CheckOutRightCard.vue";
 import ReviewCard from "../components/checkOut/ReviewCard.vue";
 export default {
- /*  components: {
+  components: {
     CustomerMemberCard,
     LoadingCard,
     WelcomeCard,
     CheckOutRightCard,
     ReviewCard
-  }, */
+  },
   data() {
     return {
       active: 2,
@@ -168,9 +167,8 @@ export default {
         // Prepare charge data with proper user info
         const fullName =
           userData.name ||
-          `${userData.first_name || userData.firstname || ""} ${
-            userData.middle_name || ""
-          } ${userData.lastname || ""}`.trim();
+          `${userData.first_name || userData.firstname || ""} ${userData.middle_name || ""
+            } ${userData.lastname || ""}`.trim();
 
         const chargeData = {
           name: fullName || "Guest",
@@ -219,6 +217,7 @@ export default {
 .el-card.is-always-shadow {
   box-shadow: var(--el-box-shadow-light);
 }
+
 @media (max-width: 550px) {
   .el-step__title {
     font-size: 14px;
