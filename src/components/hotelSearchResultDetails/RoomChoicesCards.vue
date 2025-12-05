@@ -220,7 +220,6 @@
 import { mapState, mapActions, mapMutations } from "vuex";
 import RoomCard from "./RoomCard.vue";
 import LoadingCard from '../reusable-component/LoadingCard.vue'
-import RoomCard from "./RoomCard.vue";
 import CancellationTimeLineRoomDialog from '../checkOut/CancellationTimeLineRoomDialog.vue'
 export default {
   data() {
@@ -242,7 +241,6 @@ export default {
     };
   },
   components: {
-    RoomCard,
     LoadingCard,
     RoomCard,
     CancellationTimeLineRoomDialog
