@@ -1,7 +1,7 @@
 <template>
   {{ this.computedManyRoomSelection }}
   <el-card v-if="!checkoutDataComputed?.bookingData">
-    <loading-card></loading-card>
+    <LoadingCard></LoadingCard>
   </el-card>
   <div v-else>
     <el-card
@@ -468,6 +468,7 @@
 <script>
 import { VueTelInput } from "vue3-tel-input";
 import { mapState, mapMutations, mapActions } from "vuex";
+import LoadingCard from "../reusable-component/LoadingCard.vue";
 export default {
   props: {
     checkoutData: {
@@ -477,6 +478,7 @@ export default {
   },
   components: {
     VueTelInput,
+    LoadingCard
   },
   data() {
     return {

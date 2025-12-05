@@ -7,16 +7,10 @@
         <el-card class="w-60">
           <div class="flex flex-col gap-2">
             <div class="bg-#5cf4eb flex justify-center w-24 p-4 rounded-xl">
-              <span
-                class="i-mdi-cancel text-white text-4xl text-slate-800"
-              ></span>
+              <span class="i-mdi-cancel text-white text-4xl text-slate-800"></span>
             </div>
             <p>Free Cancellation</p>
-            <el-switch
-              :disabled="roomsLoader"
-              size="large"
-              v-model="filters.freeCancellation"
-            ></el-switch>
+            <el-switch :disabled="roomsLoader" size="large" v-model="filters.freeCancellation"></el-switch>
           </div>
         </el-card>
 
@@ -26,11 +20,7 @@
               <img src="../../assets/icons/dinner.png" alt="food icon" />
             </div>
             <p>With Breakfast</p>
-            <el-switch
-              :disabled="roomsLoader"
-              size="large"
-              v-model="filters.breakfast"
-            ></el-switch>
+            <el-switch :disabled="roomsLoader" size="large" v-model="filters.breakfast"></el-switch>
           </div>
         </el-card>
       </div>
@@ -39,13 +29,10 @@
 
   <!-- end of filters of body cards -->
   <el-col class="mt-6" v-if="roomsLoader">
-    <loading-card></loading-card>
+    <LoadingCard></LoadingCard>
   </el-col>
 
-  <div
-    v-else-if="computedRooms.length != 0"
-    class="flex flex-wrap gap-6 mt-12 justify-center"
-  >
+  <div v-else-if="computedRooms.length != 0" class="flex flex-wrap gap-6 mt-12 justify-center">
     <div v-for="(room, roomIndex) in computedRooms" :key="room.id">
       <!-- <div class="sm:block border-1 border-slate-200 main-card">
       <div
@@ -216,7 +203,7 @@
         </div> -->
       <!-- </div>
       </div> -->
-      <room-card :room="room" :hotelsDetails="availbleHotelsDetails" />
+      <RoomCard :room="room" :hotelsDetails="availbleHotelsDetails" />
     </div>
   </div>
 
@@ -225,13 +212,16 @@
       Sorry There is no Rooms available try another search
     </h5>
   </el-col>
-  <cancellation-time-line-room-dialog></cancellation-time-line-room-dialog>
+  <CancellationTimeLineRoomDialog></CancellationTimeLineRoomDialog>
 
   <!-- end of body cards -->
 </template>
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 import RoomCard from "./RoomCard.vue";
+import LoadingCard from '../reusable-component/LoadingCard.vue'
+import RoomCard from "./RoomCard.vue";
+import CancellationTimeLineRoomDialog from '../checkOut/CancellationTimeLineRoomDialog.vue'
 export default {
   data() {
     return {
@@ -253,6 +243,9 @@ export default {
   },
   components: {
     RoomCard,
+    LoadingCard,
+    RoomCard,
+    CancellationTimeLineRoomDialog
   },
   computed: {
     ...mapState("hotels", [
@@ -266,7 +259,7 @@ export default {
     ]),
     ...mapState("featuredHotels", ["featuredHotelsRooms"]),
     computedRooms() {
-      if (this.availbleHotelsDetails.data.rooms_count) {
+      if (this.availbleHotelsDetails?.data?.rooms_count) {
         // console.log("rooms_count", this.availbleHotelsDetails.data.rooms_count);
         // console.log("data", this.availbleHotelsDetails.data);
 

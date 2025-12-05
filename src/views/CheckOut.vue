@@ -1,14 +1,8 @@
 <template>
   <el-row class="lg:md:px-20 sm:px-5 py-10">
     <el-col>
-      <el-steps
-        :space="300"
-        process-status="finish"
-        :active="active"
-        align-center
-        finish-status="success"
-        class="justify-center"
-      >
+      <el-steps :space="300" process-status="finish" :active="active" align-center finish-status="success"
+        class="justify-center">
         <el-step title="Review Hotel Details" />
         <el-step title="Traveller Details" />
         <el-step title="Payment" />
@@ -17,55 +11,32 @@
   </el-row>
 
   <!-- Show loading if checkout data is not ready -->
-  <el-row
-    v-if="!isCheckoutDataReady"
-    class="lg:md:px-20 sm:px-4 pb-10 justify-center"
-  >
+  <el-row v-if="!isCheckoutDataReady" class="lg:md:px-20 sm:px-4 pb-10 justify-center">
     <el-col>
       <el-card>
-        <loading-card></loading-card>
+        <LoadingCard></LoadingCard>
       </el-card>
     </el-col>
   </el-row>
 
   <!-- Show content when checkout data is ready -->
-  <el-row
-    v-else
-    class="lg:md:px-20 sm:px-4 pb-10 justify-between"
-    v-if="active != 3"
-  >
+  <el-row v-else class="lg:md:px-20 sm:px-4 pb-10 justify-between" v-if="active != 3">
     <el-col :span="24" :lg="16" :sm="24" :md="16" :xs="24">
       <review-card :checkout-data="checkoutData"></review-card>
       <welcome-card :checkout-data="checkoutData"></welcome-card>
       <customer-member-card :loading="loading"></customer-member-card>
     </el-col>
-    <el-col
-      :span="24"
-      :lg="7"
-      :sm="24"
-      :md="7"
-      :xs="24"
-      class="sm:mt-10 lg:md:mt-0"
-    >
-      <check-out-right-card
-        :checkout-data="checkoutData"
-      ></check-out-right-card>
+    <el-col :span="24" :lg="7" :sm="24" :md="7" :xs="24" class="sm:mt-10 lg:md:mt-0">
+      <check-out-right-card :checkout-data="checkoutData"></check-out-right-card>
     </el-col>
     <!-- <payment-card></payment-card> -->
   </el-row>
 
   <!-- Large Pay Button -->
-  <el-row
-    v-if="isCheckoutDataReady && active != 3"
-    class="lg:md:px-20 sm:px-4 pb-10"
-  >
+  <el-row v-if="isCheckoutDataReady && active != 3" class="lg:md:px-20 sm:px-4 pb-10">
     <el-col class="w-full flex justify-center" :span="24">
-      <el-button
-        type="primary"
-        class="custom-button font-bold text-xl py-8"
-        @click="handlePayment"
-        :loading="paymentLoading"
-      >
+      <el-button type="primary" class="custom-button font-bold text-xl py-8" @click="handlePayment"
+        :loading="paymentLoading">
         PAY NOW
       </el-button>
     </el-col>
@@ -74,10 +45,12 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import CustomerMemberCard from "@/components/checkOut/CustomerMemberCard.vue";
+import LoadingCard from "../components/reusable-component/LoadingCard.vue";
 
 export default {
   components: {
     CustomerMemberCard,
+    LoadingCard
   },
   data() {
     return {

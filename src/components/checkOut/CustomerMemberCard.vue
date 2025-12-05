@@ -6,24 +6,17 @@
 
     <!-- Loading state -->
     <div v-if="loading" class="text-center py-10">
-      <loading-card></loading-card>
+      <LoadingCard></LoadingCard>
     </div>
 
     <!-- Empty state -->
-    <div
-      v-else-if="!customerMembers || customerMembers.length === 0"
-      class="text-center py-10"
-    >
+    <div v-else-if="!customerMembers || customerMembers.length === 0" class="text-center py-10">
       <p class="text-slate-500">No customer members found</p>
     </div>
 
     <!-- Members list -->
     <div v-else class="px-3 md:px-5 py-3">
-      <div
-        v-for="(member, index) in customerMembers"
-        :key="index"
-        class="member-item"
-      >
+      <div v-for="(member, index) in customerMembers" :key="index" class="member-item">
         <div class="flex items-center justify-between py-3 border-b">
           <div class="flex items-center gap-3">
             <span class="i-mdi-account-circle text-3xl text-violet-600"></span>
@@ -50,7 +43,7 @@
 
 <script>
 import { mapState } from "vuex";
-
+import LoadingCard from "../reusable-component/LoadingCard.vue";
 export default {
   name: "CustomerMemberCard",
   props: {
@@ -62,6 +55,9 @@ export default {
   computed: {
     ...mapState("wallet", ["customerMembers"]),
   },
+  components: {
+    LoadingCard
+  }
 };
 </script>
 

@@ -3,7 +3,7 @@
     v-if="!checkoutDataComputed?.bookingData || !checkoutDataComputed?.hotel"
     class="review-card"
   >
-    <loading-card></loading-card>
+    <LoadingCard></LoadingCard>
   </el-card>
 
   <el-card v-else class="review-card">
@@ -171,12 +171,16 @@
 </template>
 <script>
 import { mapState, mapMutations } from "vuex";
+import LoadingCard from "../reusable-component/LoadingCard.vue";
 export default {
   props: {
     checkoutData: {
       type: Object,
       default: null,
     },
+  },
+  components: {
+    LoadingCard
   },
   data() {
     return {
