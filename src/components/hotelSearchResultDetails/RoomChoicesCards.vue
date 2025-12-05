@@ -32,7 +32,7 @@
     <LoadingCard></LoadingCard>
   </el-col>
 
-  <div v-else-if="computedRooms.length != 0" class="flex flex-wrap gap-6 mt-12 justify-center">
+  <div v-else-if="computedRooms?.length != 0" class="flex flex-wrap gap-6 mt-12 justify-center">
     <div v-for="(room, roomIndex) in computedRooms" :key="room.id">
       <!-- <div class="sm:block border-1 border-slate-200 main-card">
       <div

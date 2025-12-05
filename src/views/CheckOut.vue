@@ -22,12 +22,12 @@
   <!-- Show content when checkout data is ready -->
   <el-row v-else class="lg:md:px-20 sm:px-4 pb-10 justify-between" v-if="active != 3">
     <el-col :span="24" :lg="16" :sm="24" :md="16" :xs="24">
-      <review-card :checkout-data="checkoutData"></review-card>
-      <welcome-card :checkout-data="checkoutData"></welcome-card>
+      <ReviewCard :checkout-data="checkoutData"></ReviewCard>
+      <WelcomeCard :checkout-data="checkoutData"></WelcomeCard>
       <customer-member-card :loading="loading"></customer-member-card>
     </el-col>
     <el-col :span="24" :lg="7" :sm="24" :md="7" :xs="24" class="sm:mt-10 lg:md:mt-0">
-      <check-out-right-card :checkout-data="checkoutData"></check-out-right-card>
+      <CheckOutRightCard :checkout-data="checkoutData"></CheckOutRightCard>
     </el-col>
     <!-- <payment-card></payment-card> -->
   </el-row>
@@ -46,11 +46,17 @@
 import { mapActions, mapState } from "vuex";
 import CustomerMemberCard from "@/components/checkOut/CustomerMemberCard.vue";
 import LoadingCard from "../components/reusable-component/LoadingCard.vue";
+import WelcomeCard from "../components/checkOut/WelcomeCard.vue";
+import CheckOutRightCard from "../components/checkOut/CheckOutRightCard.vue";
+import ReviewCard from "../components/checkOut/ReviewCard.vue";
 
 export default {
   components: {
     CustomerMemberCard,
-    LoadingCard
+    LoadingCard,
+    WelcomeCard,
+    CheckOutRightCard,
+    ReviewCard
   },
   data() {
     return {
