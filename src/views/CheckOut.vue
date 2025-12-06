@@ -51,13 +51,13 @@ import WelcomeCard from "../components/checkOut/WelcomeCard.vue";
 import CheckOutRightCard from "../components/checkOut/CheckOutRightCard.vue";
 import ReviewCard from "../components/checkOut/ReviewCard.vue";
 export default {
-  components: {
+ /*  components: {
     CustomerMemberCard,
     LoadingCard,
     WelcomeCard,
     CheckOutRightCard,
     ReviewCard
-  },
+  }, */
   data() {
     return {
       active: 2,

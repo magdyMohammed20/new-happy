@@ -167,11 +167,12 @@
       </div>
     </div>
   </el-card>
-  <cancellation-time-line-dialog></cancellation-time-line-dialog>
+  <CancellationTimeLineRoomDialog></CancellationTimeLineRoomDialog>
 </template>
 <script>
 import { mapState, mapMutations } from "vuex";
 import LoadingCard from "../reusable-component/LoadingCard.vue";
+import CancellationTimeLineRoomDialog from '../checkOut/CancellationTimeLineRoomDialog.vue'
 export default {
   props: {
     checkoutData: {
@@ -180,7 +181,8 @@ export default {
     },
   },
   components: {
-    LoadingCard
+    LoadingCard,
+    CancellationTimeLineRoomDialog
   },
   data() {
     return {

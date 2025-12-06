@@ -549,7 +549,6 @@ export default {
         );
 
         this.roomDetails = roomData.data || roomData;
-
         // Build checkout object on page load once room details are available
         this.buildCheckout();
 
