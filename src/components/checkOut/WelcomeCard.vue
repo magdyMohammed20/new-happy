@@ -1,5 +1,5 @@
 <template>
-  {{ this.computedManyRoomSelection }}
+  <!-- {{ this.computedManyRoomSelection }} -->
   <el-card v-if="!checkoutDataComputed?.bookingData">
     <LoadingCard></LoadingCard>
   </el-card>
@@ -478,10 +478,11 @@ export default {
   },
   components: {
     VueTelInput,
-    LoadingCard
+    LoadingCard,
   },
   data() {
     return {
+      appUrl: window.location.origin,
       checkPhoneNumberDialog: false,
       tabPublicKey: "",
       tappyPublicKey: "",

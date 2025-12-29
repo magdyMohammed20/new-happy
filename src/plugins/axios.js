@@ -7,14 +7,15 @@ import {
 let appInstance;
 let networkErrorLogged = false;
 
-// url
-const STAGING_BACKEND_URL = "https://stg-backend.happytbooking.com/";
-const STAGING_PYTHON_URL = "https://stg-py.happytbooking.com/";
-const PRODUCTION_BACKEND_URL = "https://backend.happytbooking.com/";
-const PRODUCTION_PYTHON_URL = "https://py.happytbooking.com/";
+export const BASE_URL =
+  import.meta.env.VITE_ENVIRONMENT === "STAGING"
+    ? import.meta.env.VITE_STAGING_BACKEND_URL
+    : import.meta.env.VITE_PRODUCTION_BACKEND_URL;
 
-export const BASE_URL = STAGING_BACKEND_URL;
-export const PYTHON_URL = STAGING_PYTHON_URL;
+export const PYTHON_URL =
+  import.meta.env.VITE_ENVIRONMENT === "STAGING"
+    ? import.meta.env.VITE_STAGING_PYTHON_URL
+    : import.meta.env.VITE_PRODUCTION_PYTHON_URL;
 
 // Function to set the Vue instance
 export function setVueInstance(instance) {
@@ -83,6 +84,11 @@ const responseInterceptorSocket = (response) => response;
 
 // Error interceptor
 const errorInterceptor = (error) => {
+
+  if (error.code == 'ERR_NETWORK') {
+     //window.location.href = "/login";
+
+  }
   if (error.response && error.response.data.message === "Unauthenticated.") {
     window.localStorage.setItem("status", error.response.data.message);
     window.localStorage.removeItem("token");

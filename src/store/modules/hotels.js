@@ -126,20 +126,19 @@ const actions = {
           localStorage.setItem("availbleHotels", JSON.stringify(response));
           commit("SET_AVAILABLE_HOTELS_LOADER", false);
           commit("SET_ENABLE_FILTERS", true);
-          
+
           state.connection.close();
         }
 
-        if (response.code == 400) { 
+        if (response.code == 400) {
           localStorage.removeItem("availbleHotels");
           commit("SET_AVAILABLE_HOTELS_LOADER", null);
 
           commit("SET_ENABLE_FILTERS", false);
         }
-
       } catch (err) {
         commit("SET_AVAILABLE_HOTELS_LOADER", false);
-        
+
         state.connection.close();
       }
     };
@@ -344,7 +343,9 @@ const actions = {
 
   convertCurrency({ state, commit }, { from, to, amount = 100 }) {
     return fetch(
-      `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}&access_key=e9cffdf0d37553e4849840e1856323b8`,
+      `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}&access_key=${
+        import.meta.env.VITE_EXCHANGE_RATE_API_KEY
+      }`,
     )
       .then((res) => {
         let response = res.json();

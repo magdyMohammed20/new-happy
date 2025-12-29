@@ -32,10 +32,13 @@
 <script>
 import { mapActions, mapState } from "vuex";
 // import bookingCard from "../components/userAccount/bookingsComponent/bookingCard.vue"
+import bookingPackageCard from "../components/userAccount/bookingPackageCard.vue";
+
 export default {
-  // components:{
-  //   bookingCard
-  // },
+  components: {
+    bookingPackageCard
+     //bookingCard
+  },
   data() {
     return {
       activeName: "first",
